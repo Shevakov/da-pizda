@@ -9,20 +9,14 @@ import (
 )
 
 var answers = map[string]string{
-	"пизда": "да",      
-	"пизда": "da",      
-	"пизда": "lf",      
+	"пизда": "да",
 	"да": "пизда",   
-	"да": "pizda",   
-	"да": "gbplf",   
 	"пидора ответ": "нет",     
-	"пидора ответ": "net",     
-	"пидора ответ": "ytn",     
 	"забор покрасьте": "здрасьте",
-	"отсоси у тракториста": "300",     
-	"отсоси у тракториста": "триста",
-   	"соси сочно: "точно",
-}
+	"лучший сериал": "слово пацана",
+	"отсоси у тракториста": "300",
+	"шутки": "хуютки",    
+   	"соси сочно": "точно",}
 
 func main() {
 	//достанем токен из файла
@@ -65,6 +59,15 @@ func main() {
 						log.Fatalf("Error sending message: %v", err)
 					}
 				}
+				// if update.Message.Photo != 0 {
+				// 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, "ахаха")
+				// 	msg.BaseChat.ReplyToMessageID = update.Message.MessageID //добавляем реплай
+				// 	log.Printf("Sending %s", "ахаха")
+				// 	_, err := bot.Send(msg)
+				// 	if err != nil {
+				// 		log.Fatalf("Error sending message: %v", err)
+				// 	}
+				// }
 			}
 		}
 	}
