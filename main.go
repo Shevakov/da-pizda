@@ -59,15 +59,15 @@ func main() {
 						log.Fatalf("Error sending message: %v", err)
 					}
 				}
-				// if update.Message.Photo != 0 {
-				// 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, "ахаха")
-				// 	msg.BaseChat.ReplyToMessageID = update.Message.MessageID //добавляем реплай
-				// 	log.Printf("Sending %s", "ахаха")
-				// 	_, err := bot.Send(msg)
-				// 	if err != nil {
-				// 		log.Fatalf("Error sending message: %v", err)
-				// 	}
-				// }
+				if update.Message.Photo != nil  {
+					msg := tgbotapi.NewMessage(update.Message.Chat.ID, "ахаха")
+					msg.BaseChat.ReplyToMessageID = update.Message.MessageID //добавляем реплай
+					log.Printf("Sending %s", "ахаха")
+					_, err := bot.Send(msg)
+					if err != nil {
+						log.Fatalf("Error sending message: %v", err)
+					}
+				}
 			}
 		}
 	}
