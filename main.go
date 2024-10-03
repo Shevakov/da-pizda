@@ -51,8 +51,7 @@ func main() {
 		case update := <-upd:
 			//проверяем, от канала или от пользователя
 			if update.ChannelPost == nil && update.EditedMessage == nil {
-				log.Printf("Sending %s", update.Message.From.UserName)
-				if update.Message.From.UserName == "pizdabalabol_bot" {
+				if update.Message.From.IsBot {
 					msg := tgbotapi.NewMessage(update.Message.Chat.ID, "зато я пехаю твою жену")
 					msg.BaseChat.ReplyToMessageID = update.Message.MessageID //добавляем реплай
 					log.Printf("Sending %s", update.Message.From.UserName)
