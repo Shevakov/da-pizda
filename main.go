@@ -51,6 +51,16 @@ func main() {
 		case update := <-upd:
 			//проверяем, от канала или от пользователя
 			if update.ChannelPost == nil && update.EditedMessage == nil {
+				log.Printf("Sending %s", update.Message.From.UserName)
+				if update.Message.From.UserName == "pizdabalabol_bot" {
+					msg := tgbotapi.NewMessage(update.Message.Chat.ID, "зато я пехаю твою жену")
+					msg.BaseChat.ReplyToMessageID = update.Message.MessageID //добавляем реплай
+					log.Printf("Sending %s", update.Message.From.UserName)
+					_, err := bot.Send(msg)
+					if err != nil {
+						log.Fatalf("Error sending message: %v", err)
+					}
+				}
 				if reply := answers[strings.ToLower(update.Message.Text)]; reply != "" {
 					msg := tgbotapi.NewMessage(update.Message.Chat.ID, reply)
 					msg.BaseChat.ReplyToMessageID = update.Message.MessageID //добавляем реплай
