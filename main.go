@@ -60,7 +60,7 @@ func main() {
 						log.Fatalf("Error sending message: %v", err)
 					}
 				}
-				if update.Message.Photo != nil  {
+				if update.Message.Photo != nil || update.Message.Video != nil {
 					msg := tgbotapi.NewMessage(update.Message.Chat.ID, "ахаха")
 					msg.BaseChat.ReplyToMessageID = update.Message.MessageID //добавляем реплай
 					log.Printf("Sending %s", "ахаха")
